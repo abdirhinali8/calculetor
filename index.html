@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c50909;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .calculator {
+      width: 300px;
+      margin: 100px auto;
+      background-color: #4e4848;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(175, 164, 164, 0.1);
+    }
+    input[type="button"] {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      background-color: #4200f8;
+      cursor: pointer;
+    }
+    input[type="button"]:hover {
+      background-color: #00ff22;
+    }
+    input[type="text"] {
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      text-align: right;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <input type="button" value="7" onclick="appendToDisplay('7')">
+    <input type="button" value="8" onclick="appendToDisplay('8')">
+    <input type="button" value="9" onclick="appendToDisplay('9')">
+    <input type="button" value="/" onclick="appendToDisplay('/')">
+    <br>
+    <input type="button" value="4" onclick="appendToDisplay('4')">
+    <input type="button" value="5" onclick="appendToDisplay('5')">
+    <input type="button" value="6" onclick="appendToDisplay('6')">
+    <input type="button" value="*" onclick="appendToDisplay('*')">
+    <br>
+    <input type="button" value="1" onclick="appendToDisplay('1')">
+    <input type="button" value="2" onclick="appendToDisplay('2')">
+    <input type="button" value="3" onclick="appendToDisplay('3')">
+    <input type="button" value="-" onclick="appendToDisplay('-')">
+    <br>
+    <input type="button" value="C" onclick="clearDisplay()">
+    <input type="button" value="0" onclick="appendToDisplay('0')">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="+" onclick="appendToDisplay('+')">
+  </div>
+  
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      const displayValue = document.getElementById('display').value;
+      if (displayValue) {
+        try {
+          const result = eval(displayValue);
+          document.getElementById('display').value = result;
+        } catch (error) {
+          document.getElementById('display').value = 'Error';
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>
